@@ -1,0 +1,24 @@
+<h1>Address Book</h1>
+
+#if($success)
+<h3>Contact successfully added yay</h3>
+#end
+
+#if($contacts)
+<ul>
+  #foreach($contact in $contacts)
+    <li><strong><a href="contacts/$contact.getId()">$contact.getName()</a></strong></li>
+  #end
+</ul>
+#else
+<h3>No contacts yet!</h3>
+#end
+
+<h2>Add a contact</h2>
+<form method="post" action="/contacts">
+  <div class="form-group">
+    <label for="name">Contact name:</label>
+    <input type="text" class="form-control" name="name">
+  </div>
+  <button type="submit" class="btn btn-primary">Add Contact</button>
+</form>

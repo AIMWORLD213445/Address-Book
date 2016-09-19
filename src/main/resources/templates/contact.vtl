@@ -1,0 +1,45 @@
+<h1>$contact.getName()</h1>
+#if($success)
+<h3>Entry successfully added yay</h3>
+#end
+
+#if($addresses)
+<ul>
+  #foreach($address in $addresses)
+    <li><strong>$address.getName()</strong>
+      <ul>
+        <li>$address.getMailingAddress()</li>
+        <li>$address.getPhone()</li>
+        <li>$address.getEmail()</li>
+      </ul>
+    </li>
+  #end
+</ul>
+#else
+<h3>No entries yet!</h3>
+#end
+
+<h2>Add an entry</h2>
+<form method="post" action="/contacts/$contact.getId()">
+  <input id="contactId" name="contactId" type="hidden" value="$contact.getId()">
+
+  <div class="form-group">
+    <label for="name">Entry name:</label>
+    <input type="text" class="form-control" name="name" placeholder="home, work, etc">
+  </div>
+  <div class="form-group">
+    <label for="mailing-address">Mailing Address</label>
+    <input type="text" class="form-control" name="mailing-address">
+  </div>
+  <div class="form-group">
+    <label for="email">Email Address</label>
+    <input type="text" class="form-control" name="email">
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input type="text" class="form-control" name="phone">
+  </div>
+  <button type="submit" class="btn btn-primary">Add Entry</button>
+</form>
+
+<a href="/">Back to All Contacts</a>
